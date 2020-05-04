@@ -1,0 +1,99 @@
+<!-- head para PC -->
+{% extends "home/base_home.html" %}
+{% load  static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <!-- primer bloque del home -->
+    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
+        <!-- bloque de blog principal -->
+        <div class="cell small-12 large-6">
+            <div class="card" style="width: 100%;">
+                <img style="width: 100%; height: 400px;" src="{{portada.image.url}}">
+                <div class="card-section">
+                <h4>  <a href="{% url 'entrada_app:detalle_entrada' portada.id %} ">{{portada.title}}</a></h4>
+                  <p>{{portada.resumen| truncatechars:120}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- FIN bloque de blog principal -->
+
+        <!-- bloque de blog principal -->
+        <div class="cell small-12 large-6 grid-x grid-margin-x">
+           
+           {% for entrada in entradas_home  %}
+           <div class="cell small-6 large-6">
+            <div class="card" style="width: 100%; ">
+                <img style="height: 200px; height: 200px;" src="{{entrada.image.url}}">
+                <div class="card-section">
+                  <h5><a href="{% url 'entrada_app:detalle_entrada' entrada.id %} ">{{entrada.title}}</a></h5>
+                </div>
+            </div>
+        </div>      
+           {% endfor %}
+               
+         
+            
+        <!-- FIN bloque de blog principal -->
+    </div>
+    <!-- FIN del primer bloque home -->
+
+    <!-- segundo bloque pantalla home -->
+    <div class="grid-x align-center" style="margin-top: 1em; width: 100%;">
+        <div class="cell small-12 large-10 callout secondary">
+            <h5 id="fuente">{{home.title}}</h5>
+            <p id="fuente">
+                Creamos contenido educativo relacionado a la programación web, 
+            
+            <h5 id="fuente">Contactate con nosotros:<span>{{home.phone}}</span></h5>    
+            </p>
+
+            <p id="fuente">
+                <button class="button" data-open="exampleModal2">Suscribirme ya</button>
+            </p>
+
+            <!-- This is the first modal -->
+            <div class="reveal" id="exampleModal2" data-reveal style="width: 300px;">
+                <p class="lead">Ingresa tu correo</p>
+                <form class="grid-x grid-margin-x" method="POST" action="{% url 'home_app:addsuscripcion'%}" >{% csrf_token %}
+                    <div class="cell small-12"style="width: 100%;">
+                        {{form.email}}
+                    </div>
+                    <div class="cell small-12">
+                        <button type="submit" class="button">Suscribirme</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+ 
+
+ 
+    
+    <div class="grid-x grid-margin-x align-center fuente">
+        <h3 class="cell">Articulos Recientes:</h3>
+        {% for entrada_rec in entradas_recientes %}
+        <div class="cell small-6 large-4">
+            <div class="card" style="width: 100%;">
+                <img src="{{entrada_rec.image.url}}">
+                <div class="card-section">
+                  <h4>{{entrada_rec.title}}</h4>
+                  <p>{{entrada_rec.resumen | truncatechars:60}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+     </div> 
+
+        
+ 
+    <!-- FIN tercer bloque -->
+</div>
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}

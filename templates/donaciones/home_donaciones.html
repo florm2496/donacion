@@ -1,0 +1,30 @@
+{% extends 'donaciones/base_donaciones.html' %}
+{% load static %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}  
+
+<div class="grid-x grid-margin-x" style="margin: 2em;" id="fuente">
+<div class="cell large-6">
+    <p>Sabemos mas que nunca que la situacion es dificil , muchas personas se quedaron sin trabajo y no pueden llevar el pan a casa. Es nuestro deber como sociedad no mirar para un costado y hacer lo posible por general igualda de condiciones . Ayudemos a ayudar</p>
+    <div style="text-align: center;"> 
+        <a class="button" href="{% url 'donaciones_app:add_donacion' %}"style="color: white; ">Quiero donar</a>
+    </div>
+</div>
+<div class="cell large-6">
+    <img src=" {% static 'img/familia.png' %} " style="width: 70%;" class="w-100 rounded img-thumbnail float-center" >
+</div>
+
+
+    </div>
+
+    {% include 'includes/footer.html' %} 
+
+{% endblock content %}
+
+
+
+
+    
+

@@ -1,0 +1,26 @@
+{% load static %}
+<header id="fuente">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Pacifico&family=Playball&family=Sacramento&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="{% static 'css/myblog.css' %}">
+    <div class="grid-x grid-margin-x header">
+        <div class="cell small-12 medium-3 large-3">
+            <a href="#" style="color:white; font-size: xx-large;" id="fuente" >
+                 17 de noviembre
+            </a>
+        </div>
+        <div class="cell small-12 medium-9 large-9">
+            <ul class="menu" style="justify-content: flex-end; ">
+                <li>
+                    <a  style="color: white; " href="{% url 'donaciones_app:home_donaciones' %}">Ayudemos</a>
+                </li>
+                <li>
+                    <a  style="color: white;" href="{% url 'home_app:index' %} ">Nuestra historia</a>
+                </li>
+                <li>
+                    <a class="button" href="{% url 'users_app:user-login' %}" style="color: white;">Iniciar Sesion</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</header>

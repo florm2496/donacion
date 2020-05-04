@@ -1,0 +1,53 @@
+{% extends 'favoritos/base_favo.html' %}
+{% load  static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center" style="margin-top: 1em;">
+        <!-- bloque de datos de usuario -->
+        <div class="cell small-12 large-4">
+            <div class="callout">
+                <h5>{{user.full_name}}</h5>
+                
+                <a href="#">Editar Datos</a>
+                
+                 <a href="{% url  'users_app:user-logout' %}" class="clear button secondary">SALIR</a>
+                
+            </div>
+        </div>
+        <!-- FIN bloque de datos de usuario -->
+
+
+        <!-- bloque de articulos favoritos de usuario<h3 class="card-favoritos-body-titulo">{{for_donacion.detalle}}</h3> -->
+        <div class="cell large-8 grid-x grid-margin-x align-center">
+      
+     
+     
+     {% for entrada in entrada_user  %}
+     <div class="cell small-12">
+        <div class="card-favoritos">
+            <img class="card-favoritos-img" src={{entrada.entry.image.url}}>
+            <div class="card-favoritos-body">
+                
+                <p class="card-favoritos-body-text"></p>
+                <div class="card-favoritos-body-actions">
+                    <a class="button warning" href="#">Ver</a>
+                    <a class="button alert" href="#">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+     {% endfor %}
+         
+         
+           
+        </div>
+        <!-- FIN bloque de articulos favoritos de usuario -->
+    </div>
+</div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}
